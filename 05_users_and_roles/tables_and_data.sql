@@ -65,3 +65,12 @@ INSERT INTO customers (customer_name, email) VALUES
 SELECT CURRENT_SECONDARY_ROLES();
 
 SELECT * FROM transactions;
+
+CREATE TABLE suppliers (
+    supplier_id INT AUTOINCREMENT,
+    supplier_name STRING,
+    PRIMARY KEY (supplier_id)
+);
+
+USE ROLE sysadmin;
+DROP TABLE suppliers;
