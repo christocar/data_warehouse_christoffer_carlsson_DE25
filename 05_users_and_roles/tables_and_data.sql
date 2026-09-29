@@ -2,6 +2,8 @@ USE ROLE ice_cream_writer;
 USE WAREHOUSE dev_wh;
 USE SCHEMA ice_cream_db.public;
 
+--CREATE TABLES
+
 
 CREATE TABLE flavors (
     flavor_id INT AUTOINCREMENT,
@@ -28,7 +30,8 @@ CREATE TABLE transactions (
     FOREIGN KEY (flavor_id) REFERENCES flavors (flavor_id)
 );
 
--- Step 5: Insert sample data
+
+--INSERT DATA ROWS
 INSERT INTO flavors (flavor_name, price) VALUES
 ('Vanilla', 2.50),
 ('Chocolate', 2.75),
@@ -49,28 +52,3 @@ INSERT INTO transactions (
 (3, 3, 3, CURRENT_TIMESTAMP),
 (1, 4, 1, CURRENT_TIMESTAMP),
 (2, 5, 2, CURRENT_TIMESTAMP);
-
-
-SELECT * FROM flavors;
-
--- change to ice_cream_reader and select data 
-USE ROLE ice_cream_reader;
-SELECT * FROM customers;
-
--- insufficient privilege for ice_Cream_reader to insert data
-INSERT INTO customers (customer_name, email) VALUES
-('John Doe2', 'john.doe@example.com');
-
--- VSC snowflake extension by default enables the use of secondary roles, so check below if there are any active secondary roles
-SELECT CURRENT_SECONDARY_ROLES();
-
-SELECT * FROM transactions;
-
-CREATE TABLE suppliers (
-    supplier_id INT AUTOINCREMENT,
-    supplier_name STRING,
-    PRIMARY KEY (supplier_id)
-);
-
-USE ROLE sysadmin;
-DROP TABLE suppliers;

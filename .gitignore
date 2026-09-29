@@ -218,3 +218,6 @@ __marimo__/
 .streamlit/secrets.toml
 
 06_extract_load_csv_dlt/.dlt/
+
+# dlt
+**/.dlt/

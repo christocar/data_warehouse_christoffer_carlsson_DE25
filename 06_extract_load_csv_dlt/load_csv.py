@@ -3,13 +3,11 @@ import pandas as pd
 from pathlib import Path
 import os
 
-
 #used for extracting data from source, in this case a local csv file
 @dlt.resource(write_disposition="replace")
 def load_csv_resource(file_path: str, **kwargs):
     df = pd.read_csv(file_path, **kwargs)
     yield df
-
 
 if __name__ == "__main__":
     #need to change to current working directory as this is where
@@ -23,7 +21,7 @@ if __name__ == "__main__":
     os.chdir(working_directory)
     csv_path = working_directory / "data" / "NetflixOriginals.csv"
     data = load_csv_resource(csv_path, encoding="latin1")
-    print(data)
+    
     pipeline = dlt.pipeline(
         pipeline_name='movies',
         destination="snowflake",
