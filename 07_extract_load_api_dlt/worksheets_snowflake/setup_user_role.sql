@@ -8,7 +8,7 @@ USE ROLE USERADMIN;
 CREATE ROLE IF NOT EXISTS job_ads_dlt_role;
 
 CREATE USER IF NOT EXISTS extract_loader
-    PASSWORD = 'data_loader'
+    PASSWORD = '' -- create a password and fill in here
     DEFAULT_WAREHOUSE = dev_wh;
 
 
